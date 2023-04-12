@@ -5,7 +5,8 @@ Initial steps to follow before start project into local system:
 1. Web.config : file change connection string to your system.
 
 2. Update database :
-   Update-Database -Configuration UdemyMVC.CompanyMigration.Configuration Update-Database -Configuration UdemyMVC.IdentityMigrations.Configuration
+   (i) Update-Database -Configuration UdemyMVC.CompanyMigration.Configuration 
+   (ii) Update-Database -Configuration UdemyMVC.IdentityMigrations.Configuration
 
 Description of project :
 
