@@ -11,7 +11,7 @@ Initial steps to follow before start project into local system:
 Description of project :
 
 This project demonstrates diffrent Areas in MVC (eg. Admin, Manager and Customer) and according rights for CRUD with respect of diffrent Areas. 
-Ajax and WebApi used in Admin->Brands.
+Ajax and WebApi used in Admin->Brands. Register and Login functionality also applied with AspNet.Identity. Layered architecture followed to differentiate and manage code.
 InCase if you change any models then you need to update database by following commands:
 
   1. Enable-Migrations -ContextTypeName UdemyMVC.Identity.ApplicationDbContext -MigrationsDirectory IdentityMigrations
