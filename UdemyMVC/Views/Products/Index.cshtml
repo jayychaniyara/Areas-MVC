@@ -1,0 +1,19 @@
+﻿@model List<Company.DomainModels.Product>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="card-group">
+    @foreach (var item in Model)
+    {
+        <div class="card m-2 text-black bg-light border-3" style="width: 18rem;">
+            <img class="card-img-top" alt="Card image cap" src="data:image;base64,@item.Photo" />
+            <div class="card-body">
+                <h5 class="card-title">@item.ProductName</h5>
+                <p class="card-text"><small class="text-muted">@((item.Brand!=null)?item.Brand.BrandName:"")</small></p>
+                <p class="card-text"><small class="text-muted">@((item.Category!=null)?item.Category.CategoryName:"")</small></p>
+            </div>
+        </div>
+    }
+</div>

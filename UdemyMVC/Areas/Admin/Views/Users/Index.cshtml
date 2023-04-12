@@ -1,0 +1,28 @@
+﻿@model List<UdemyMVC.Identity.ApplicationUser>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+}
+
+
+<table class="table table-dark table-striped">
+    <tr>
+        <td class="text-danger">Username</td>
+        <td class="text-danger">Email</td>
+        <td class="text-danger">Mobile</td>
+        <td class="text-danger">City</td>
+        <td class="text-danger">Country</td>
+        <td class="text-danger">Date of Birth</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.UserName</td>
+            <td>@item.Email</td>
+            <td>@item.PhoneNumber</td>
+            <td>@item.City</td>
+            <td>@item.Country</td>
+            <td>@item.Birthday</td>
+        </tr>
+    }
+</table>

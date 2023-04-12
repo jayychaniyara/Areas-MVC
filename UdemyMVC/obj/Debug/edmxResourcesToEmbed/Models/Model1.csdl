@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudentManagementModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="StudentDetail">
+    <Key>
+      <PropertyRef Name="StudentID" />
+      <PropertyRef Name="FirstName" />
+      <PropertyRef Name="LastName" />
+      <PropertyRef Name="SchoolName" />
+      <PropertyRef Name="Gender" />
+    </Key>
+    <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SchoolName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="StudentManagementEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="StudentDetails" EntityType="Self.StudentDetail" />
+  </EntityContainer>
+</Schema>

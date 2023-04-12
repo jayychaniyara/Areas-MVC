@@ -1,0 +1,15 @@
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.RepositoryContracts\bin\Debug\Company.RepositoryContracts.dll
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.RepositoryContracts\bin\Debug\Company.RepositoryContracts.pdb
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.RepositoryContracts\bin\Debug\Company.DataLayer.dll
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.RepositoryContracts\bin\Debug\Company.DomainModels.dll
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.RepositoryContracts\bin\Debug\EntityFramework.dll
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.RepositoryContracts\bin\Debug\Company.DataLayer.pdb
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.RepositoryContracts\bin\Debug\Company.DataLayer.dll.config
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.RepositoryContracts\bin\Debug\Company.DomainModels.pdb
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.RepositoryContracts\bin\Debug\Company.DomainModels.dll.config
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.RepositoryContracts\bin\Debug\EntityFramework.xml
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.RepositoryContracts\obj\Debug\Company.RepositoryContracts.csproj.AssemblyReference.cache
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.RepositoryContracts\obj\Debug\Company.RepositoryContracts.csproj.CoreCompileInputs.cache
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.RepositoryContracts\obj\Debug\Company.RepositoryContracts.csproj.CopyComplete
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.RepositoryContracts\obj\Debug\Company.RepositoryContracts.dll
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.RepositoryContracts\obj\Debug\Company.RepositoryContracts.pdb

@@ -1,0 +1,13 @@
+﻿@model HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+}
+
+<h2 style="color:red;">Error occurred</h2>
+<h6>Acion method name : @Model.ActionName</h6>
+<h6>Controller name : @Model.ControllerName</h6>
+<h6>Exception message : @Model.Exception.Message </h6>
+<h6>Exception type : @Model.Exception.GetType().ToString()</h6>
+
+

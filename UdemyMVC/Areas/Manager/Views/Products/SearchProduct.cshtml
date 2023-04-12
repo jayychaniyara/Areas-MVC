@@ -1,0 +1,132 @@
+﻿@model List<Company.DomainModels.Product>
+
+@{
+    ViewBag.Title = "SearchProduct";
+    Layout = "~/Areas/Manager/Views/Shared/ManagerLayoutPage1.cshtml";
+
+
+}
+
+<h3 class="mb-3 mt-3">Search products</h3>
+
+<form class="form-inline" action="/Manager/Products/SearchProduct">
+    <div class="row">
+        <div class="col-2">
+            @Html.TextBox("Search", ViewBag.Search as string, new { @class = "form-control mr-2", placeholder = "Search" })
+        </div>
+
+        <div class="col-3">
+            <select class="form-control text-bg-dark" id="SortColumn" name="SortColumn">
+                @if (ViewBag.SortColumn != null)
+                {
+                    <option value="@ViewBag.SortColumn" class="fw-bold" selected="selected">@ViewBag.SortColumn</option>
+                    <option value="ProductID">Produtc Id</option>
+                    <option value="ProductName">Product Name</option>
+                    <option value="DateOfPurchase">Date of purchase</option>
+                    <option value="CategoryName">Category Name</option>
+                    <option value="BrandName">Brand Name</option>
+                }
+                else
+                {
+                    <option value="ProductID" class="fw-bold">Sort Data (Produtc Id)</option>
+                    <option value="ProductName">Product Name</option>
+                    <option value="DateOfPurchase">Date of purchase</option>
+                    <option value="CategoryName">Category Name</option>
+                    <option value="BrandName">Brand Name</option>
+                }
+
+            </select>
+        </div>
+
+        <div class="col-3">
+            <select class="form-control text-bg-dark" id="Index" name="Index">
+                @if (ViewBag.index != null)
+                {
+                    <option value="@ViewBag.index" class="fw-bold" selected="selected">@ViewBag.index</option>
+                    <option value="asc" class="fw-bold">Index (Ascending)</option>
+                    <option value="desc">Descending</option>
+                }
+                else
+                {
+                    <option value="asc" class="fw-bold">Index (Ascending)</option>
+                    <option value="desc">Descending</option>
+                }
+
+            </select>
+        </div>
+
+        <div class="col-3"></div>
+
+        <div class="col-1">
+            <button class="btn btn-success" type="submit">Go</button>
+        </div>
+    </div>
+</form>
+
+<table class="table mt-3">
+
+    <tr class="table-secondary">
+        <th style="width:10%">Product Id</th>
+        <th style="width:30%">Product Name</th>
+        <th style="width:15%">Date of purchase</th>
+        <th style="width:10%">Availablity Status</th>
+        <th style="width:10%">Category</th>
+        <th style="width:10%">Brand</th>
+        <th style="width:5%">Active</th>
+        <th style="width:10%">Image</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(temp => item.ProductID)</td>
+            <td>@Html.DisplayFor(temp => item.ProductName)</td>
+            <td>@item.DateOfPurchase.Value.ToString("d/M/yyyy")</td>
+            <td>@item.AvailablityStatus</td>
+            <td>@item.Category.CategoryName</td>
+            <td>@item.Brand.BrandName</td>
+            <td>@item.Active</td>
+            <td><img src="data:image;base64,@item.Photo" width="100px" /></td>
+        </tr>
+    }
+    <tr>
+        <td colspan="9">
+            @{
+                int PreviousPageNo = ViewBag.PageNo - 1;
+                if (PreviousPageNo <= 0)
+                {
+                    PreviousPageNo = 1;
+                }
+
+                int NextPageNo = ViewBag.PageNo + 1;
+                if (NextPageNo > ViewBag.NoOfPages)
+                {
+                    NextPageNo = ViewBag.NoOfPages;
+                }
+            }
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="/Manager/Products/SearchProduct?search=&SortColumn=@ViewBag.SortColumn&Index=@ViewBag.index&pageno=@PreviousPageNo">Previous</a>
+                </li>
+                @for (int i = 0; i < ViewBag.NoOfPages; i++)
+                {
+                    if ((i + 1) == ViewBag.PageNo)
+                    {
+                        <li class="page-item active">
+                            <a class="page-link" href="/Manager/Products/SearchProduct?search=&SortColumn=@ViewBag.SortColumn&Index=@ViewBag.index&pageno=@(i+1)">@(i+1)</a>
+                        </li>
+                    }
+                    else
+
+                    {
+                        <li class="page-item">
+                            <a class="page-link" href="/Manager/Products/SearchProduct?search=&SortColumn=@ViewBag.SortColumn&Index=@ViewBag.index&pageno=@(i+1)">@(i+1)</a>
+                        </li>
+                    }
+                }
+                <li class="page-item">
+                    <a class="page-link" href="/Manager/Products/SearchProduct?search=&SortColumn=@ViewBag.SortColumn&Index=@ViewBag.index&pageno=@NextPageNo">Next</a>
+                </li>
+            </ul>
+        </td>
+    </tr>
+</table>

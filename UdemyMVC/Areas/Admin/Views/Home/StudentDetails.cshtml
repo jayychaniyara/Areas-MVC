@@ -1,0 +1,77 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.4.js"></script>
+    <script src="~/Scripts/umd/popper.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>StudentDetails</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/home/index">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/home/products">Products</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/home/contact">Contact</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/home/StudentDetails">Students</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/Admin/home/RequestExample">Request</a>
+            </li>
+        </ul>
+    </nav>
+
+    @{
+        string StudentResult;
+        if (ViewBag.Marks >= 35)
+        {
+            StudentResult = "pass";
+        }
+        else
+        {
+            StudentResult = "fail";
+
+        }
+    }
+
+    <table class="table">
+        <tr>
+            <td>@ViewBag.StudentId</td>
+            <td>@ViewBag.StudentName</td>
+            <td colspan="2">
+                @{
+                    if (StudentResult == "pass")
+                    {
+                        <span class="text-success">Congratulation</span>
+                    }
+                    else
+                    {
+                        <span class="text-danger">Better luck next time!</span>
+
+                    }
+                }
+            </td>
+            <td>
+                @foreach (var item in ViewBag.SubjectList)
+                {
+                    <ul>@item</ul>
+                }
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

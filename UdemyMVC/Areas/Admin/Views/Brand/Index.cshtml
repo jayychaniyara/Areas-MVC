@@ -1,0 +1,203 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+}
+
+<h4>AJAX calls and Web Api Implementation</h4>
+
+<div class="row">
+    <div class="col-2">
+        <button class="btn btn-outline-success mb-3 mt-3" type="button" id="btnGetBrands">Get Brands</button>
+    </div>
+    <div class="col-10"></div>
+</div>
+
+<table class="table table-dark table-striped brandsTable">
+
+    <tr>
+        <th>Brand Id</th>
+        <th>Brand Name</th>
+        <th>Details</th>
+        <th>Update</th>
+    </tr>
+
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="ViewBrandModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Brand Details</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-hover table-striped">
+                    <tr>
+                        <td>Brand ID</td>
+                        <td><span id="BrandIdSpan"></span></td>
+                    </tr>
+                    <tr>
+                        <td>Brand Name</td>
+                        <td><span id="BrandNameSpan"></span></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr />
+
+<div class="row">
+
+    <div class="col-5">
+        <div class="card">
+            <div class="card-header">
+                New Brand
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="BrandID">Brand ID</label>
+                        <input type="text" class="form-control" placeholder="Brand Id" id="txtNewBrandID" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BrandName">Brand Name</label>
+                        <input type="text" class="form-control" placeholder="Brand Name" id="txtNewBrandName" />
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button type="button" id="btnInsert" class="btn btn-outline-success">Save</button>
+                <button type="button" id="btnCancel" class="btn btn-outline-danger">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-2"></div>
+
+    <div class="col-5">
+        <div class="card">
+            <div class="card-header">
+                Edit Brand
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                        <label for="BrandID">Brand ID</label>
+                        <input type="text" class="form-control" placeholder="Brand Id" id="txtEditBrandID" disabled="disabled" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="BrandName">Brand Name</label>
+                        <input type="text" class="form-control" placeholder="Brand Name" id="txtEditBrandName" />
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer">
+                <button type="button" id="btnUpdate" class="btn btn-outline-success">Update</button>
+                <button type="button" id="btnCancelUpdate" class="btn btn-outline-danger">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+    $("#btnGetBrands").click(() => {
+        $.ajax({
+            type: "GET", url: "/api/Brands", success: (response) => {
+                for (var i = 0; i < response.length; i++) {
+                    var br = response[i];
+                    var str = "<tr><td>" + br.BrandId + "</td> <td>" + br.BrandName + "</td> <td><button type='button' class='btn btn-outline-info ViewBrandButton' data-brandid='" + br.BrandId + "' data-bs-toggle='modal' data-bs-target='#ViewBrandModel'>View</button></td> <td> <button type='button' class ='btn btn-outline-light EditBrandButton' data-brandid='" + br.BrandId + "'>Edit</button> </td></tr > ";
+                    $(".brandsTable").append(str);
+                }
+            }, error: (error) => {
+                alert(error);
+            }
+        });
+    });
+
+    //To perform view details of brands on click of view button
+    $(document).on("click", ".ViewBrandButton", (event) => {
+        var bid = $(event.target).attr("data-brandid");
+        console.log(bid)
+        $.ajax({
+            type: "GET", url: "/api/Brands?brandid=" + bid, success: (response) => {
+                $("#BrandIdSpan").html(response.BrandId);
+                $("#BrandNameSpan").html(response.BrandName);
+            }, error: (error) => {
+                alert(error);
+            }
+        });
+    });
+
+    //Inserting new brand details
+    $("#btnInsert").click(() => {
+        var brandId = $('#txtNewBrandID').val();
+        var brandName = $('#txtNewBrandName').val();
+
+        $.ajax({
+            type: "POST", url: "/api/Brands", data: { "brandid": brandId, "brandname": brandName },
+            success: (response) => {
+                var str = "<tr><td>" + brandId + "</td> <td>" + brandName + "</td> <td><button type='button' class='btn btn-outline-info ViewBrandButton' data-brandid='" + brandId + "' data-bs-toggle='modal' data-bs-target='#ViewBrandModel'>View</button></td> <td> <button type='button' class ='btn btn-outline-light EditBrandButton' data-brandid='" + brandId + "'>Edit</button> </td></tr > ";
+
+                //var str = "<tr><td>" + brandId + "</td> <td>" + brandName + "</td> </tr>";
+                $(".brandsTable").append(str);
+            },
+            error: (err) => {
+                alert(err);
+            }
+        });
+    });
+
+
+    //Updating existing brand details
+    var CurrentRow;
+
+    $(document).on("click", ".EditBrandButton", (event) => {
+        var bid = $(event.target).attr("data-brandid");
+
+        CurrentRow = $(event.target).parent().parent();
+        $.ajax({
+            type: "GET", url: "/api/Brands?brandid=" + bid, success: (response) => {
+                $("#txtEditBrandID").val(response.BrandId);
+                $("#txtEditBrandName").val(response.BrandName);
+            }, error: (error) => {
+                alert(error);
+            }
+        });
+    });
+
+
+    $("#btnUpdate").click(() => {
+        var brandId = $('#txtEditBrandID').val();
+        var brandName = $('#txtEditBrandName').val();
+
+        $.ajax({
+            type: "PUT", url: "/api/Brands", data: { "brandid": brandId, "brandname": brandName },
+            success: (response) => {
+                CurrentRow.find("td:eq(0)").html(brandId);
+                CurrentRow.find("td:eq(1)").html(brandName);
+            },
+            error: (err) => {
+                alert(err);
+            }
+        });
+    });
+
+    //Cancel button click
+    $("#btnCancelUpdate").click(() => {
+        $("#txtEditBrandID").val("");
+        $("#txtEditBrandName").val("");
+    });
+
+    $("#btnCancel").click(() => {
+        $("#txtNewBrandID").val("");
+        $("#txtNewBrandName").val("");
+    });
+</script>

@@ -1,0 +1,51 @@
+﻿@model List<Company.DomainModels.Product>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+
+}
+
+<table class="table table-dark table-striped">
+
+    <tr>
+        <th>Product Id</th>
+        <th>Product Name</th>
+        <th>Date of purchase</th>
+        <th>Availablity Status</th>
+        <th>Category Name</th>
+        <th>Brand Name</th>
+        <th>Active</th>
+        <th>Image</th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductID</td>
+            <td>@item.ProductName</td>
+            <td>@item.DateOfPurchase.Value.ToString("yyyy-MM-dd")</td>
+            <td>@item.AvailablityStatus</td>
+            <td>
+                @if (item.Category != null)
+                {
+                    <span>@item.Category.CategoryName</span>
+                }
+            </td>
+            <td>
+                @if (item.BrandId.HasValue)
+                {
+                    <span>@item.Brand.BrandName</span>
+                }
+            </td>
+            <td>@item.Active</td>
+            <td><img src="data:image;base64,@item.Photo" width="100px" /></td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { @class = "text-success", id = item.ProductID, controller = "Products" })
+                <a href="/Admin/Products/Edit/@item.ProductID" class="m-1">Edit</a>
+                <a href="/Admin/Products/Delete/@item.ProductID" class="m-1 text-danger">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+

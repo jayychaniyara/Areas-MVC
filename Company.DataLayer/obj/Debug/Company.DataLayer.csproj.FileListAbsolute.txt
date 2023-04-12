@@ -1,0 +1,15 @@
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.DataLayer\bin\Debug\Company.DataLayer.dll.config
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.DataLayer\bin\Debug\Company.DataLayer.dll
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.DataLayer\bin\Debug\Company.DataLayer.pdb
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.DataLayer\bin\Debug\Company.DomainModels.dll
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.DataLayer\bin\Debug\EntityFramework.dll
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.DataLayer\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.DataLayer\bin\Debug\Company.DomainModels.pdb
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.DataLayer\bin\Debug\Company.DomainModels.dll.config
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.DataLayer\bin\Debug\EntityFramework.xml
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.DataLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.DataLayer\obj\Debug\Company.DataLayer.csproj.AssemblyReference.cache
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.DataLayer\obj\Debug\Company.DataLayer.csproj.CoreCompileInputs.cache
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.DataLayer\obj\Debug\Company.DataLayer.csproj.CopyComplete
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.DataLayer\obj\Debug\Company.DataLayer.dll
+C:\Users\jay.chaniyara\Documents\Project\Udemy MVC\Company.DataLayer\obj\Debug\Company.DataLayer.pdb

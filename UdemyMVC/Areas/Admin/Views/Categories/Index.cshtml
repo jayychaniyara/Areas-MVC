@@ -1,0 +1,21 @@
+﻿@model List<Company.DomainModels.Category>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/AdminLayoutPage1.cshtml";
+
+}
+
+<table class="table table-dark table-striped">
+
+    <tr>
+        <th>Category Id</th>
+        <th>Category Name</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryId</td>
+            <td>@item.CategoryName</td>
+        </tr>
+    }
+</table>
